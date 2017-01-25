@@ -1,0 +1,21 @@
+{
+  "name": "bingo-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "author": "samblacklock <samblacklock@me.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.0.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-watch": "^4.3.11",
+    "split-array": "^1.0.1",
+    "vinyl-source-stream": "^1.1.0",
+    "vue": "^2.1.10",
+    "vueify": "^9.4.0"
+  }
+}
