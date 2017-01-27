@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './app.vue';
+import Game from './game';
 
 class BingoGame {
   constructor(ticketString) {
