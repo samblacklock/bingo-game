@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>HELLO U</h1>
-    <game v-for="game of games" :gameString="game"></game>
+    <game v-for="game of games" :gameObj="game"></game>
   </div>
 </template>
 

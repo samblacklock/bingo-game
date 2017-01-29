@@ -1,4 +1,4 @@
 export default {
   name: 'Game',
-  props: ['gameString']
+  props: ['gameObj']
 }

@@ -16,10 +16,36 @@ const vm = new Vue({
 
 
 function splitTicketString(ticketString) {
-  const arr = ticketString.match(/.{1,30}/g);
-  const games = [];
-  arr.filter((a) => {
-    games.push(a.match(/.{1,2}/g).sort());
+  const schema = { 0: '', 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
+  const gameArray = [];
+
+  const arr = ticketString.match(/.{1,10}/g);
+  const games = arr.map((row) => {
+    return row.match(/.{1,2}/g)
   });
-  return arr; //remember to change this back
+
+  games.forEach((num) => {
+    const gameObj = JSON.parse(JSON.stringify(schema));
+
+    num.forEach((num) => {
+      const index = num.charAt(0);
+      gameObj[index] = parseInt(num, 10);
+
+      if(gameObj[9]) {
+        gameObj[8] = gameObj[9];
+      }
+
+      delete gameObj[9];
+    });
+
+    gameArray.push(gameObj);
+  });
+
+  let newArray = [];
+
+  while(gameArray.length) {
+    newArray.push(gameArray.splice(0,3));
+  }
+
+  return newArray;
 }
