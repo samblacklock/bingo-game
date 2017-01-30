@@ -2,32 +2,33 @@ import Vue from 'vue';
 import App from './app/component.vue';
 
 const tickets = "011722475204365360702637497481233455758302154058881928446789061241507324334876840738576186051132437816395663800818206590104559628214294664710935667287132130687703253151692742547985";
-const gameTickets = splitTicketString(tickets);
+const games = parseTicketString(tickets);
 
 const vm = new Vue({
   el: '#app',
   data: () => {
     return {
-      games: gameTickets
+      games: games
     }
   },
   render: createElement => createElement(App),
 });
 
+lookupTable(games);
 
-function splitTicketString(ticketString) {
+
+function parseTicketString(ticketString) {
   const schema = { 0: '', 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
   const gameArray = [];
 
-  const arr = ticketString.match(/.{1,10}/g);
-  const games = arr.map((row) => {
+  const gameRows = ticketString.match(/.{1,10}/g).map((row) => {
     return row.match(/.{1,2}/g)
   });
 
-  games.forEach((num) => {
+  for(let row of gameRows) {
     const gameObj = JSON.parse(JSON.stringify(schema));
 
-    num.forEach((num) => {
+    row.forEach((num) => {
       const index = num.charAt(0);
       gameObj[index] = parseInt(num, 10);
 
@@ -39,13 +40,25 @@ function splitTicketString(ticketString) {
     });
 
     gameArray.push(gameObj);
-  });
+  };
 
-  let newArray = [];
+  let sortedGames = [];
 
   while(gameArray.length) {
-    newArray.push(gameArray.splice(0,3));
+    sortedGames.push(gameArray.splice(0,3));
   }
 
-  return newArray;
+  return sortedGames;
+}
+
+function lookupTable(games) {
+  window.lookupTable = {};
+
+  games.forEach((a, i) => {
+    a.forEach((b) => {
+      for(let c in b) {
+        window.lookupTable[Object.keys(window.lookupTable).length + 1] = a[b[c]]
+      }
+    })
+  });
 }
