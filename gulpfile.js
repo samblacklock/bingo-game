@@ -19,7 +19,7 @@ gulp.task('html', function(){
 //Convert ES6 ode in all js files in src/js folder and copy to
 //build folder as bundle.js
 gulp.task('scripts', function(){
-    return browserify('./js/index.js')
+    return browserify('./js/main.js')
     .transform(vueify)
     .transform(babelify)
     .bundle()
@@ -40,5 +40,5 @@ gulp.task('server', function(){
 
 gulp.task('watch', function() {
   gulp.watch(['./*.html'], ['html']);
-  gulp.watch(['./js/*.js'], ['scripts']);
+  gulp.watch(['./js/**'], ['scripts']);
 });
