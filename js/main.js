@@ -7,7 +7,7 @@ const vm = new Vue({
   el: '#app',
   data: () => {
     return {
-      games: tickets
+      games: tickets,
     }
   },
   render: createElement => createElement(App),

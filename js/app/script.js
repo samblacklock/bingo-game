@@ -19,7 +19,7 @@ export default {
         return row.match(/.{1,2}/g)
       });
 
-      for(let row of gameRows) {
+      for(const row of gameRows) {
         const gameObj = JSON.parse(JSON.stringify(schema));
 
         row.forEach((num) => {
@@ -36,7 +36,7 @@ export default {
         gameArray.push(gameObj);
       };
 
-      let sortedGames = [];
+      const sortedGames = [];
 
       while(gameArray.length) {
         sortedGames.push(gameArray.splice(0,3));
@@ -49,15 +49,13 @@ export default {
       const lookupTable = {};
       games.forEach((game) => {
         game.forEach((b) => {
-          for(let c in b) {
-            (function(c, b) {
-              let index = Object.keys(lookupTable).length + 1;
-              lookupTable[index] = null;
-              Object.defineProperty(lookupTable, index, {
-                get: () => { return b[c] },
-                set: (val) => { b[c] = val; return val }
-              });
-            })(c, b);
+          for(const c in b) {
+            let index = Object.keys(lookupTable).length + 1;
+            lookupTable[index] = null;
+            Object.defineProperty(lookupTable, index, {
+              get: () => { return b[c] },
+              set: (val) => { b[c] = val; return val }
+            });
           }
         })
       });
@@ -65,14 +63,19 @@ export default {
       return lookupTable;
     },
 
-    playBingo(numbers) {
-      console.log(numbers);
+    getGameLength() {
+      const length = (this.$parent.games.length / 2) + 1;
+      return [...Array(length).keys()];
+    },
+
+    playBingo() {
+      this.getGameLength()
     }
   },
   created() {
     const games = this.$data.games;
     this.table = this.generateLookupTable(games);
     console.log(this.table);
-    this.playBingo(games);
+    this.playBingo();
   }
 }
