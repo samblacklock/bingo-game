@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <h1>HELLO U</h1>
-    <game v-for="game of games" :gameObj="game"></game>
-  </div>
+  <section class="games">
+    <ticket v-for="game of games" :numbers="game"></ticket>
+  </section>
 </template>
 
 <script src="./script.js"></script>
