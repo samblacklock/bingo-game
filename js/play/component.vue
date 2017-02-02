@@ -1,6 +1,7 @@
 <template>
   <section>
-    <button>Play Bingo</button>
+    <button v-on:click="playBingo" :disabled="gameInProgress">Play Bingo</button>
+    <button v-on:click="stopGame" :disabled="!gameInProgress">Stop Game</button>
   </section>
 </template>
 

@@ -1,8 +1,8 @@
-table {
-  background: #fefefe;
-  margin: 2rem auto;
-}
-
 .games {
-  background: purple;
+  background: linear-gradient(to bottom, transparentize(#CD75B7, 0.3), transparent 80%);
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, black 0%, transparent 90%) 2;
+  border-bottom: none;
+  padding: 1rem;
 }

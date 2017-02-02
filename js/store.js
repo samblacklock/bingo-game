@@ -16,6 +16,11 @@ export default new Vuex.Store({
       state.tickets.push(ticket);
     }
   },
+  actions: {
+    storeNumber(context, number) {
+      context.commit('SET_CALLED_NUMBER', number)
+    }
+  },
   getters: {
     ticketString: state => state.ticketString,
     tickets: state => state.tickets

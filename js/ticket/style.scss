@@ -1,4 +1,47 @@
+.ticket {
+  display: flex;
+  justify-content: center;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .winner {
+    outline: 3px dashed #ea2121;
+  }
+}
+
 td {
-  width: 20px;
+  background: white;
   border: 1px solid black;
+  font-size: 1.3rem;
+  height: 2rem;
+  text-align: center;
+  position: relative;
+  width: 2rem;
+}
+
+.checked:after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M256.01 204.645L356.128 104.5l51.344 51.33-100.118 100.145-51.344-51.33zM155.827 407.483l-51.344-51.358 100.16-100.132 51.345 51.358-100.16 100.133zM407.498 356.112l-51.373 51.358-100.118-100.146 51.373-51.358 100.118 100.146zM104.502 155.857l51.337-51.35L255.99 204.63l-51.337 51.352-100.153-100.125z"/><path d="M255.983 307.36l-51.35-51.365 51.364-51.35 51.35 51.364-51.364 51.35z"/></svg>');
+  background-size: contain;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.countdown {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+
+  .value {
+    display: block;
+    font-size: 3rem;
+  }
 }

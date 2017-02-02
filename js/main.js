@@ -8,7 +8,8 @@ const tickets = "011722475204365360702637497481233455758302154058881928446789061
 const vm = new Vue({
   el: '#app',
   template: `
-    <section>
+    <section class="main">
+      <h1>90 Ball Bingo!</h1>
       <games></games>
       <play></play>
     </section>`,
