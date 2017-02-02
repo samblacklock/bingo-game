@@ -9,6 +9,9 @@ export default {
       bus.$on('newNumberPicked', (number) => {
         this.updateTicket(number);
       });
+      bus.$on('newGame', () => {
+        this.resetGame();
+      });
     },
 
     buildTicket(numbers) {
@@ -58,6 +61,16 @@ export default {
     endGame() {
       this.$refs.ticket.classList.add('winner');
       bus.$emit('gameWon');
+    },
+
+    resetGame() {
+      this.buildTicket(this.numbers);
+
+      this.$refs.ticket.querySelectorAll('.checked').forEach((i) => {
+        i.classList.remove('checked');
+      });
+      this.$refs.ticket.classList.remove('winner');
+      this.updateCheckedNumbers();
     }
   },
 

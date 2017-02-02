@@ -49,6 +49,11 @@ export default {
       clearInterval(this.interval);
       this.gameInProgress = false;
       console.info('Game stopped');
+    },
+
+    resetGame() {
+      bus.$emit('newGame');
+      this.numbers = this.generateNumbers();
     }
   },
 

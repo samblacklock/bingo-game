@@ -2,6 +2,7 @@
   <section>
     <button v-on:click="playBingo" :disabled="gameInProgress">Play Bingo</button>
     <button v-on:click="stopGame" :disabled="!gameInProgress">Stop Game</button>
+    <button v-on:click="resetGame" :disabled="gameInProgress">Reset Game</button>
   </section>
 </template>
 
